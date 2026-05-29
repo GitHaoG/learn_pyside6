@@ -1,16 +1,28 @@
-# 这是一个示例 Python 脚本。
+from loguru import logger
 
-# 按 Shift+F10 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
-
-
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+from PySide6.QtCore import QRect, Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QLineEdit
 
 
-# 按装订区域中的绿色按钮以运行脚本。
+class MyWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        btn = QPushButton("按钮", self)
+        btn.setGeometry(QRect(0, 0, 200, 100))
+        btn.setToolTip("看点提示")
+
+        label = QLabel("我是你爹我是你爹我是你爹我是你爹我是你爹",self)
+
+        line_edit = QLineEdit(self)
+        line_edit.setPlaceholderText("输入点什么")
+        return
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    app = QApplication([])
+    window = MyWindow()
+    window.show()
 
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+    return_code = app.exec()
+    logger.info("程序运行结束: {}".format(return_code))
+    pass
